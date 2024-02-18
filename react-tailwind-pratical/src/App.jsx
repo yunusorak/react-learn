@@ -2,35 +2,24 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import AddWorkers from "./components/Workers/AddWorkers";
+import WorkerList from "./components/Workers/WorkerList";
+import ErrorModal from "./components/UI/ErrorModal";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [workers, setWorkers] = useState([]);
 
   return (
     <>
-      <div>
-        <h1 className="text-3xl font-bold underline text-amber-400">
-          Hello world!
-        </h1>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1 className="text-fuchsia-500 text-center mt-3 font-bold text-3xl">
+        Maaş Otomasyonu
+      </h1>
+      <span className="bg-purple-100 text-purple-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">
+        Purple
+      </span>
+      <AddWorkers workers={workers} setWorkers={setWorkers} />
+
+      <WorkerList workers={workers} setWorkers={setWorkers} />
     </>
   );
 }
