@@ -18,6 +18,11 @@ const Todo = (props) => {
           }`}
         >
           {todo.todo}
+          <span
+            class={`bg-purple-100 text-purple-800 text-xs font-medium me-2 ml-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-purple-400 border border-purple-400`}
+          >
+            {todo.id}
+          </span>
         </p>
         <button
           onClick={() => {
@@ -25,7 +30,7 @@ const Todo = (props) => {
               return !prevState;
             });
           }}
-          className={`flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green-600 ${
+          className={`dark:text-white dark:hover:bg-green-900 flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green-600 ${
             todoState ? "hidden" : "block"
           }`}
         >
@@ -37,7 +42,7 @@ const Todo = (props) => {
               return !prevState;
             });
           }}
-          className={`flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-gray-400
+          className={`dark:text-white dark:hover:bg-slate-700 flex-no-shrink p-2 m-0 border-2 rounded hover:text-white text-green border-green hover:bg-gray-400
           ${todoState ? "block" : "hidden"}
           `}
         >
