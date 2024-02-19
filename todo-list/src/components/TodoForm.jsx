@@ -16,7 +16,14 @@ const TodoForm = (props) => {
   };
   const addTodoHandler = () => {
     props.setTodos((prevState) => {
-      return [...prevState, { todo: todo.todo, state: todo.state }];
+      return [
+        ...prevState,
+        {
+          todo: todo.todo,
+          state: todo.state,
+          id: Math.floor(Math.random() * 1000),
+        },
+      ];
     });
     setTodos({ todo: "", state: false });
   };
@@ -34,6 +41,7 @@ const TodoForm = (props) => {
                 todokey="todo"
                 className="shadow appearance-none border w-full py-2 px-3 mr-4 text-grey-darker"
                 placeholder="Add Todo"
+                value={todo.todo}
               />
               <button
                 onClick={addTodoHandler}
