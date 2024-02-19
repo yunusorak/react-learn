@@ -1,6 +1,26 @@
-import React from "react";
+import { useState } from "react";
 
-const TodoForm = () => {
+const TodoForm = (props) => {
+  const [todo, setTodos] = useState({
+    todo: "",
+    state: false,
+  });
+
+  const updateTodo = (e) => {
+    setTodos((prevState) => {
+      return {
+        state: false,
+        [e.target.getAttribute("todokey")]: e.target.value.trim(),
+      };
+    });
+  };
+  const addTodoHandler = () => {
+    props.setTodos((prevState) => {
+      return [...prevState, { todo: todo.todo, state: todo.state }];
+    });
+    setTodos({ todo: "", state: false });
+  };
+
   return (
     <>
       <div className="h-100 w-full flex items-center justify-center bg-teal-lightest font-sans">
@@ -10,10 +30,15 @@ const TodoForm = () => {
             <div className="flex mt-4">
               <input
                 type="text"
+                onChange={updateTodo}
+                todokey="todo"
                 className="shadow appearance-none border w-full py-2 px-3 mr-4 text-grey-darker"
                 placeholder="Add Todo"
               />
-              <button className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal-600">
+              <button
+                onClick={addTodoHandler}
+                className="flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal-600"
+              >
                 Add
               </button>
             </div>
