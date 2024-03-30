@@ -25,7 +25,7 @@ const counterSubscriber = () => {
   console.log(latestState);
 };
 
-store.subscribe(counterSubscriber);
+store.subscribe(counterSubscriber); // Subscribe ile Durum güncellemesi dinleme
 
 store.dispatch({ type: "INCREMENT" });
 store.dispatch({ type: "DECREMENT" });
