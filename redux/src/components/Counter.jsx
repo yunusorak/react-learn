@@ -1,21 +1,25 @@
 import { useSelector, useDispatch } from "react-redux";
+import { counterActions } from "../store/counter";
 
 const Counter = () => {
-  const counter = useSelector((state) => state.counter);
-  const showcount = useSelector((state) => state.showCounter);
+  const counter = useSelector((state) => state.counter.value);
+  const showcount = useSelector((state) => state.counter.showCounter);
   const dispatch = useDispatch();
+  const { increment } = counterActions;
 
   const incrementHandler = () => {
-    dispatch({ type: "INCREMENT" });
+    // dispatch({ type: "INCREMENT" });
+    dispatch(increment());
   };
   const decrementHandler = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch(counterActions.decrement());
   };
   const increaseHandler = () => {
-    dispatch({ type: "INCREASE", amount: 5 });
+    // dispatch({ type: "INCREASE", amount: 5 });
+    dispatch(counterActions.increase({ amount: 6 }));
   };
   const showCounter = () => {
-    dispatch({ type: "TOGGLE" });
+    dispatch(counterActions.toggleCounter());
   };
 
   return (
@@ -25,8 +29,8 @@ const Counter = () => {
       <h3>Redux Counter</h3>
       <b> {showcount && counter} </b> <br />
       <button onClick={incrementHandler}>Increase</button>
-      <button onClick={increaseHandler}>Increase by 5</button>
-      <button onClick={decrementHandler}>Decrease</button> <br />
+      <button onClick={increaseHandler}>Increase by 6</button>
+      <button onClick={decrementHandler}>Decrease</button> <br /> <br />
       <button onClick={showCounter}>Show Counter</button>
       <p>
         Edit <code>src/Components/Counter.jsx</code> and save to test HMR
